@@ -12,9 +12,10 @@ struct ContentView: View {
         VStack {
             Image(systemName: "globe")
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
                 .frame(width: 150, height: 200)
                 .background(Color.red)
+                .clipped()
         }
         .padding()
     }
