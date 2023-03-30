@@ -16,6 +16,7 @@ struct ContentView: View {
                 .frame(width: 150, height: 200)
                 .background(Color.red)
                 .clipped()
+                .clipShape(Circle())
         }
         .padding()
     }
