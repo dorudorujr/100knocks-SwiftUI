@@ -8,25 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    enum Pokemon: String, CaseIterable, Identifiable {
+        case bulbasaur, charmander, squirtle
+        var id: Self { self }
+    }
+    
+    @State private var selectedValue: Pokemon = .bulbasaur
     var body: some View {
-        NavigationStack {
-            VStack {
-                Image(systemName: "globe")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 150, height: 150)
-                    .background(Color.red)
-                    .clipped()
-                    .clipShape(Circle())    // 指定した形状にViewをクリップ
-                    .overlay(   // Viewの上にViewを重ねる
-                        RoundedRectangle(cornerRadius: 75)  // 角が丸い長方形
-                            .stroke(Color.blue, lineWidth: 5)   // 輪郭を描画するようにする
-                    )
-            }
-            .padding()
-            .navigationTitle("Navigation")
-            .navigationBarTitleDisplayMode(.large)
+        Picker("", selection: $selectedValue) {
+            Text("Bulbasaur").tag(Pokemon.bulbasaur)
+            Text("Charmander").tag(Pokemon.charmander)
+            Text("Squirtle").tag(Pokemon.squirtle)
         }
+        .pickerStyle(.wheel)
     }
 }
 
