@@ -8,22 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    enum Pokemon: String, CaseIterable, Identifiable {
-        case bulbasaur, charmander, squirtle
-        var id: Self { self }
-    }
-    
-    @State private var selectedValue: Pokemon = .bulbasaur
+    @State private var selectedValue = "Snorlax"
     var body: some View {
-        TabView {
-            Text("First")
-                .tabItem {
-                    Text("first")
-                }
-            Text("Second")
-                .tabItem {
-                    Text("Second")
-                }
+        VStack {
+            Text(selectedValue)
+            Button("Tap Me!") {
+                selectedValue = "おーーーーーーい"
+            }
         }
     }
 }
