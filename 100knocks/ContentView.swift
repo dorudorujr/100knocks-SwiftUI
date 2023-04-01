@@ -15,12 +15,16 @@ struct ContentView: View {
     
     @State private var selectedValue: Pokemon = .bulbasaur
     var body: some View {
-        Picker("", selection: $selectedValue) {
-            Text("Bulbasaur").tag(Pokemon.bulbasaur)
-            Text("Charmander").tag(Pokemon.charmander)
-            Text("Squirtle").tag(Pokemon.squirtle)
+        TabView {
+            Text("First")
+                .tabItem {
+                    Text("first")
+                }
+            Text("Second")
+                .tabItem {
+                    Text("Second")
+                }
         }
-        .pickerStyle(.wheel)
     }
 }
 
