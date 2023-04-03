@@ -8,17 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
-    let fruits = ["Apple", "Banana", "Orange", "Grape", "Cherry", "Peach"]
-    
+    @State private var showAlert = false
     var body: some View {
-        NavigationStack {
-            List(fruits, id: \.self) { fruit in
-                NavigationLink(fruit) {
-                    Text(fruit)
-                        .navigationBarBackButtonHidden()
-                }
-            }
-            .listStyle(.plain)
+        Button("Tap to show alert") {
+            showAlert = true
+        }
+        .alert(isPresented: $showAlert) {
+            Alert(
+                title: Text("Current Location Not Available"),
+                message: Text("Your current location can’t be " + "determined at this time.")
+            )
         }
     }
 }
