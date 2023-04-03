@@ -8,22 +8,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    let fruits = ["Apple", "Banana", "Orange", "Grape", "Cherry", "Peach"]
+    
     var body: some View {
-        List {
-            Section {
-                Text("Snorlax")
-                Text("Meowth")
-                Text("Ditto")
-            } header: {
-                Text("normal")
+        NavigationStack {
+            List(fruits, id: \.self) { fruit in
+                NavigationLink(fruit) {
+                    Text(fruit)
+                }
             }
-            Section {
-                Text("Vulpix")
-                Text("Arcanine")
-                Text("Charmander")
-            } header: {
-                Text("Fire")
-            }
+            .navigationTitle("果物")
         }
     }
 }
