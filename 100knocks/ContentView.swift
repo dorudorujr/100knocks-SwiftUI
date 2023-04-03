@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
-    enum Pokemon: String, CaseIterable, Identifiable {
-        case bulbasaur, charmander, squirtle
-        var id: Self { self }
-    }
-    
-    @State private var selectedValue: Pokemon = .bulbasaur
     var body: some View {
-        Picker("", selection: $selectedValue) {
-            Text("Bulbasaur").tag(Pokemon.bulbasaur)
-            Text("Charmander").tag(Pokemon.charmander)
-            Text("Squirtle").tag(Pokemon.squirtle)
+        List {
+            Section {
+                Text("Snorlax")
+                Text("Meowth")
+                Text("Ditto")
+            } header: {
+                Text("normal")
+            }
+            Section {
+                Text("Vulpix")
+                Text("Arcanine")
+                Text("Charmander")
+            } header: {
+                Text("Fire")
+            }
         }
-        .pickerStyle(.wheel)
     }
 }
 
