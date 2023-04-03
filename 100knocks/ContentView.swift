@@ -15,9 +15,9 @@ struct ContentView: View {
             List(fruits, id: \.self) { fruit in
                 NavigationLink(fruit) {
                     Text(fruit)
+                        .navigationBarBackButtonHidden()
                 }
             }
-            .navigationTitle("果物")
         }
     }
 }
