@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedValue = "Snorlax"
     var body: some View {
-        VStack {
-            Text(selectedValue)
-            Button("Tap Me!") {
-                selectedValue = "おーーーーーーい"
+        List {
+            Section {
+                Text("Snorlax")
+                Text("Meowth")
+                Text("Ditto")
+            } header: {
+                Text("normal")
+            }
+            Section {
+                Text("Vulpix")
+                Text("Arcanine")
+                Text("Charmander")
+            } header: {
+                Text("Fire")
             }
         }
     }
