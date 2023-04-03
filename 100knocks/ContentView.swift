@@ -8,18 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var showAlert = false
+    @State private var didError = false
+    @State private var details: SaveDetails?
+    let alertTitle: String = "Save failed."
+    
     var body: some View {
         Button("Tap to show alert") {
-            showAlert = true
+            details = .init(name: "OK", // Action Text
+                            error: "Error Message")
+            didError = true
         }
-        .alert(isPresented: $showAlert) {
-            Alert(
-                title: Text("Current Location Not Available"),
-                message: Text("Your current location can’t be " + "determined at this time.")
-            )
+        .alert(alertTitle,
+               isPresented: $didError,
+               presenting: details
+        ) { details in
+            Button(role: .destructive) {
+                
+            } label: {
+                Text("Delete \(details.name)")
+            }
+        } message: { details in
+            Text(details.error)
         }
     }
+}
+
+struct SaveDetails: Identifiable {
+    let name: String
+    let error: String
+    let id = UUID()
 }
 
 struct ContentView_Previews: PreviewProvider {
